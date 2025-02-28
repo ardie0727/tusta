@@ -251,14 +251,13 @@ const ChartContainer: React.FC<ChartContainerProps> = ({ isDarkMode }) => {
 
         const trendlineId = getTrendlineId(trendline)
 
-        // Check if we have existing alert data for this trendline
+
         const existingAlertData = trendlineAlerts[trendlineId]
 
         if (existingAlertData) {
-          // Use existing alert data
           setAlertFormData(existingAlertData)
 
-          // Update the notification channels based on existing data
+
           if (existingAlertData.multiselect) {
             setmultiselect((channels) =>
               channels.map((channel) => ({
@@ -268,7 +267,6 @@ const ChartContainer: React.FC<ChartContainerProps> = ({ isDarkMode }) => {
             )
           }
         } else {
-          // Create default alert data
           setAlertFormData({
             trigger: "Only Once",
             expiration: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split("T")[0] + "T16:00",
@@ -277,7 +275,6 @@ const ChartContainer: React.FC<ChartContainerProps> = ({ isDarkMode }) => {
             multiselect: [],
           })
 
-          // Reset notification channels
           setmultiselect((channels) =>
             channels.map((channel) => ({
               ...channel,
@@ -495,7 +492,6 @@ const ChartContainer: React.FC<ChartContainerProps> = ({ isDarkMode }) => {
       channels.map((channel) => (channel.id === channelId ? { ...channel, selected: !channel.selected } : channel)),
     )
 
-    // Update the form data with selected channels
     const selectedChannels = multiselect
       .filter((channel) => (channel.id === channelId ? !channel.selected : channel.selected))
       .map((channel) => channel.id)
@@ -558,7 +554,7 @@ const ChartContainer: React.FC<ChartContainerProps> = ({ isDarkMode }) => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownOpen) {
         const target = event.target as Node
-        const dropdown = document.getElementById("notification-dropdown")
+        const dropdown = document.getElementById("multiselect-dropdown")
         if (dropdown && !dropdown.contains(target)) {
           setDropdownOpen(false)
         }
