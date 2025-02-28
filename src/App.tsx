@@ -21,7 +21,7 @@ function App() {
             {isDarkMode ? <Sun size={24} /> : <Moon size={24} />}
           </button>
         </div>
-        <div className="bg-white rounded-lg shadow-lg p-6">
+        <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg shadow-lg p-6`}>
           <ChartContainer isDarkMode={isDarkMode} />
         </div>
       </div>

@@ -16,3 +16,10 @@ export interface TrendlineCoordinates {
 export interface ChartContainerProps {
   isDarkMode: boolean;
 }
+
+export interface AlertFormData {
+  trigger: string;
+  expiration: string;
+  alertName: string;
+  message: string;
+}
